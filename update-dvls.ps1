@@ -75,15 +75,15 @@ if (-not $JSON.Kestrel) {
     $DVLSAdminEmail    = 'lmor@4tw.dk'  
 
     $Params = @{
-        "DatabaseHost"           = "iacvm-od-ct100.tv2.local"
+        "DatabaseHost"           = "sql01.auth.4tw.dk"
         "DatabaseName"           = "DVLSDB"
-        "DatabaseUserName"       = "sa"
-        "DatabasePassword"       = "y!M%Qj*c81hdz&FHX8KUc718WFEn@r1KBrbuZE3$#U"
-        "ServerName"             = "TV2 LMOR Secrets vault"
-        "AccessUri"              = "http://iacvm-od-ct100.tv2.local"
-        "HttpListenerUri"        = "http://iacvm-od-ct100.tv2.local"
+        "DatabaseUserName"       = "dvlsuser"
+        "DatabasePassword"       = "qT6q.SF,Ir!,LQwpJe7d#TLVoL.157"
+        "ServerName"             = "4tw Enterprise"
+        "AccessUri"              = "http://dvls.4tw.dk"
+        "HttpListenerUri"        = "http://dvls.4tw.dk"
         "DPSPath"                = $DVLSPath
-        "UseEncryptedconnection" = $true # Modify as needed
+        "UseEncryptedconnection" = $false # Modify as needed
         "TrustServerCertificate" = $true # Modify as needed
         "EnableTelemetry"        = $true # Modify as needed
         "DisableEncryptConfig"   = $true
