@@ -35,6 +35,7 @@ $DVLSLinux = [PSCustomObject]@{
 $DVLSDownloadPath = Join-Path -Path "/tmp" -ChildPath (([URI]$DVLSLinux.URL).Segments)[-1]
 
 Invoke-RestMethod -Method "GET" -Uri $DVLSLinux.URL -OutFile $DVLSDownloadPath
+systemctl stop dvls
 if (Test-Path (Join-Path -Path $DVLSPath -ChildPath "appsettings.json")) {
     Copy-Item -Path (Join-Path -Path $DVLSPath -ChildPath "appsettings.json") -Destination (Join-Path -Path $DVLSPath -ChildPath "appsettings.json.bak") -Force
     tar -xzf $DVLSDownloadPath -C $DVLSPath --strip-components=1
@@ -111,12 +112,13 @@ if (-not $JSON.Kestrel) {
     #New-DPSDatabaseAppSettings -Configuration $Configuration
 }
 Set-DVLSPerms -DVLSPath $DVLSPath
+systemctl start dvls
 
 
 
 
-
-if (1 -eq 2) {
+$CleanDVLS = $false
+if ($CleanDVLS) {
     journalctl --flush --rotate --vacuum-time=1s
     rm -rf /opt/devolutions/dvls
 }
